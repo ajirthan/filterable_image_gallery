@@ -73,7 +73,7 @@ body{
 
 .container .image-container .image h3{
   font-size: 20px;
-  font-family: 'Grape Nuts', cursive;
+/*   font-family: 'Grape Nuts', cursive; */
   background-color: #4c6f00;
   color: #fff;
 }

@@ -16,7 +16,6 @@
   <body>
     <div class="container">
       <h1 class="heading">type to search images</h1>
-
       <input type="text" placeholder="search images" id="search-box" />
       <button
         type="button"
@@ -25,63 +24,79 @@
       >
         <i class="fa fa-random fa-2x" aria-hidden="true"></i>
       </button>
+      <button
+        type="button"
+        class="custom_button"
+        onclick="window.location.reload();"
+      >
+        <i class="fa fa-refresh fa-2x" aria-hidden="true"></i>
+      </button>
+      <h1 class="heading"><span id="keyword"></span></h1>
       <div class="image-container">
-        <div class="image" data-title="cute" data-value="animal">
-          <img src="images/cute-1.jpg" alt="" />
-          <h3>cute animal</h3>
+        <div class="image" data-title="fiery" data-value="chicken">
+          <img src="images/pizza5.jpg" alt="" />
+          <h3>Fiery Chicken</h3>
         </div>
 
-        <div class="image" data-title="modern" data-value="car">
-          <img src="images/car-1.jpg" alt="" />
-          <h3>modern car</h3>
+        <div class="image" data-title="margherita">
+          <img src="images/pizza6.jpg" alt="" />
+          <h3>Margherita</h3>
         </div>
 
-        <div class="image" data-title="tasty" data-value="food">
-          <img src="images/food-1.jpg" alt="" />
-          <h3>tasty food</h3>
+        <div class="image" data-title="tropical" data-value="hawaiian">
+          <img src="images/pizza7.jpg" alt="" />
+          <h3>Tropical Hawaiian</h3>
         </div>
 
-        <div class="image" data-title="huge" data-value="city">
-          <img src="images/city-1.jpg" alt="" />
-          <h3>huge city</h3>
+        <div class="image" data-title="pepperoni" data-value="paradiso">
+          <img src="images/pizza8.jpg" alt="" />
+          <h3>Pepperoni Paradiso</h3>
         </div>
 
-        <div class="image" data-title="tasty" data-value="food">
-          <img src="images/food-2.jpg" alt="" />
-          <h3>tasty food</h3>
+        <div class="image" data-title="seafood" data-value="supremo">
+          <img src="images/pizza9.jpeg" alt="" />
+          <h3>Seafood Supremo</h3>
         </div>
 
-        <div class="image" data-title="modern" data-value="car">
-          <img src="images/car-2.jpg" alt="" />
-          <h3>modern car</h3>
+        <div class="image" data-title="devilled" data-value="chicken">
+          <img src="images/pizza1.jpg" alt="" />
+          <h3>Devilled Chicken</h3>
         </div>
 
-        <div class="image" data-title="cute" data-value="animal">
-          <img src="images/cute-2.jpg" alt="" />
-          <h3>cute animal</h3>
+        <div class="image" data-title="cheese" data-value="lovers">
+          <img src="images/pizza2.jpg" alt="" />
+          <h3>Cheese Lovers</h3>
         </div>
 
-        <div class="image" data-title="tasty" data-value="food">
-          <img src="images/food-3.jpg" alt="" />
-          <h3>tasty food</h3>
+        <div class="image" data-title="tandoori" data-value="chicken">
+          <img src="images/pizza3.jpg" alt="" />
+          <h3>Tandoori Chicken</h3>
         </div>
 
-        <div class="image" data-title="cute" data-value="animal">
-          <img src="images/cute-3.jpg" alt="" />
-          <h3>cute animal</h3>
+        <div class="image" data-title="sausage" data-value="deight">
+          <img src="images/pizza4.jpg" alt="" />
+          <h3>Sausage Delight</h3>
         </div>
+
       </div>
     </div>
 
     <script>
+      // let keywordValue = searchBox.value;
       let searchBox = document.querySelector("#search-box");
       let images = document.querySelectorAll(
         ".container .image-container .image"
-      );
-
-      searchBox.oninput = () => {
-        images.forEach((hide) => (hide.style.display = "none"));
-        let value = searchBox.value;
+        );
+        
+        searchBox.oninput = () => {
+          images.forEach((hide) => (hide.style.display = "none"));
+          let value = searchBox.value.toLowerCase();
+          if (value.length >= 1) {
+          document.getElementById("keyword").innerHTML = `Showing results for "${value}"`;
+          }
+          else {
+          document.getElementById("keyword").innerHTML = "";
+          }
         images.forEach((filter) => {
           let title = filter.getAttribute("data-title");
           let dataValue = filter.getAttribute("data-value");
@@ -94,6 +109,9 @@
             filter.style.display = "block";
           } else if (searchBox.value == fullValue) {
             filter.style.display = "block";
+          } else if (searchBox.value !== "" || searchBox.value !== dataValue || searchBox.value !== fullValue) {
+            filter.style.display = "none";
+            document.getElementById("keyword").innerHTML = `No Matches Found. Change your keywords and try again.`;
           }
         });
       };
@@ -102,26 +120,26 @@
         //declare an array to store the images
         var randomImage = new Array();
         //insert the URL of images in array
-        randomImage[0] = "images/car-1.jpg";
-        randomImage[1] = "images/car-2.jpg";
-        randomImage[2] = "images/city-1.jpg";
-        randomImage[3] = "images/cute-1.jpg";
-        randomImage[4] = "images/cute-2.jpg";
-        randomImage[5] = "images/cute-3.jpg";
-        randomImage[6] = "images/food-1.jpg";
-        randomImage[7] = "images/food-2.jpg";
-        randomImage[8] = "images/food-3.jpg";
+        randomImage[0] = "images/pizza1.jpg";
+        randomImage[1] = "images/pizza2.jpg";
+        randomImage[2] = "images/pizza3.jpg";
+        randomImage[3] = "images/pizza4.jpg";
+        randomImage[4] = "images/pizza5.jpg";
+        randomImage[5] = "images/pizza6.jpg";
+        randomImage[6] = "images/pizza7.jpg";
+        randomImage[7] = "images/pizza8.jpg";
+        randomImage[8] = "images/pizza9.jpeg";
         var randomTopic = new Array();
-        //insert the URL of images in array
-        randomTopic[0] = "Modern Car";
-        randomTopic[1] = "Modern Car";
-        randomTopic[2] = "Huge City";
-        randomTopic[3] = "Cute Animal";
-        randomTopic[4] = "Cute Animal";
-        randomTopic[5] = "Cute Animal";
-        randomTopic[6] = "Tasty Food";
-        randomTopic[7] = "Tasty Food";
-        randomTopic[8] = "Tasty Food"
+        //insert the names of images in array
+        randomTopic[0] = "Devilled Chicken";
+        randomTopic[1] = "Cheese Lovers";
+        randomTopic[2] = "Tandoori Chicken";
+        randomTopic[3] = "Sausage Delight";
+        randomTopic[4] = "Fiery Chicken";
+        randomTopic[5] = "Margherita";
+        randomTopic[6] = "Tropical Hawaiian";
+        randomTopic[7] = "Pepperoni Paradiso";
+        randomTopic[8] = "Seafood Supremo"
         for (let i = 0; i < 1; i++) {
           //generate a number and provide to the image to generate randomly
           var number = Math.floor(Math.random() * randomImage.length);
